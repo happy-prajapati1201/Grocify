@@ -42,7 +42,7 @@ const Testimonials = () => {
         modules={[Navigation]} className="mySwiper">
           {review.map((item) => {
             return (
-              <SwiperSlide className="bg-zinc-100 rounded-xl p-8">
+              <SwiperSlide key={item.id} className="bg-zinc-100 rounded-xl p-8">
                 <div className="flex gap-5 items-center">
                   <div className="w-16 h-16 rounded-full bg-red-500 outline-2 outline-orange-500 outline-offset-4 overflow-hidden">
                     <img src={item.image} className="w-full h-full"/>
@@ -53,7 +53,7 @@ const Testimonials = () => {
                     <p className="text-zinc-600">{item.profession}</p>
                     <span className="flex text-yellow-400 gap-1 mt-3 text-xl">
                       {Array.from({length:item.ration},(_, index)=>(
-                        <FaStar />
+                        <FaStar key={index} />
                       ))}
                       </span>
                   </div>
