@@ -3,7 +3,7 @@ import { GoHeartFill } from "react-icons/go";
 import { HiShoppingBag } from "react-icons/hi2";
 import { IoSearch } from "react-icons/io5";
 import { TbMenu2 , TbMenu3 } from "react-icons/tb";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import products from '../ProductList/ProductList';
 import { CartContext } from '../../context/CartContext';
 import { AuthContext } from '../../context/AuthContext';
@@ -74,16 +74,16 @@ const Navbar = () => {
         {/* desktop menu */}
         <ul className='md:flex items-center gap-x-15 hidden'>
             <li>
-                <Link to='/' className='font-semibold text-orange-500 tracking-wider'>Home</Link>
+                <NavLink to='/' className={({isActive}) => isActive ? 'font-semibold text-orange-500 tracking-wider' : 'font-semibold text-zinc tracking-wider hover:text-orange-500'}>Home</NavLink>
             </li>
             <li>
-                <Link to='/about' className='font-semibold text-zinc tracking-wider hover:text-orange-500'>About Us</Link>
+                <NavLink to='/about' className={({isActive}) => isActive ? 'font-semibold text-orange-500 tracking-wider' : 'font-semibold text-zinc tracking-wider hover:text-orange-500'}>About Us</NavLink>
             </li>
             <li>
-                <Link to='/ourprocess' className='font-semibold text-zinc tracking-wider hover:text-orange-500'>Process</Link>
+                <NavLink to='/ourprocess' className={({isActive}) => isActive ? 'font-semibold text-orange-500 tracking-wider' : 'font-semibold text-zinc tracking-wider hover:text-orange-500'}>Process</NavLink>
             </li>
             <li>
-                <Link to='/contact' className='font-semibold text-zinc tracking-wider hover:text-orange-500'>Contact Us</Link>
+                <NavLink to='/contact' className={({isActive}) => isActive ? 'font-semibold text-orange-500 tracking-wider' : 'font-semibold text-zinc tracking-wider hover:text-orange-500'}>Contact Us</NavLink>
             </li>
         </ul>
 
@@ -166,16 +166,16 @@ const Navbar = () => {
         {/* mobile menu */}
         <ul className={`flex flex-col gap-y-15 bg-orange-500/15 backdrop-blur-xl shadow-xl rounded-xl p-10 items-center gap-x-15 md:hidden absolute top-30 -left-full transform -translate-x-1/2 transition-all duration-500 ${showmenu ? 'left-1/2' : " "}`}>
             <li>
-                <Link to='/' onClick={() => setshowmenu(false)} className='font-semibold text-orange-500 tracking-wider'>Home</Link>
+                <NavLink to='/' onClick={() => setshowmenu(false)} className={({isActive}) => isActive ? 'font-semibold text-orange-500 tracking-wider' : 'font-semibold text-zinc tracking-wider hover:text-orange-500'}>Home</NavLink>
             </li>
             <li>
-                <Link to='/about' onClick={() => setshowmenu(false)} className='font-semibold text-zinc tracking-wider hover:text-orange-500'>About Us</Link>
+                <NavLink to='/about' onClick={() => setshowmenu(false)} className={({isActive}) => isActive ? 'font-semibold text-orange-500 tracking-wider' : 'font-semibold text-zinc tracking-wider hover:text-orange-500'}>About Us</NavLink>
             </li>
             <li>
-                <Link to='/ourprocess' onClick={() => setshowmenu(false)} className='font-semibold text-zinc tracking-wider hover:text-orange-500'>Process</Link>
+                <NavLink to='/ourprocess' onClick={() => setshowmenu(false)} className={({isActive}) => isActive ? 'font-semibold text-orange-500 tracking-wider' : 'font-semibold text-zinc tracking-wider hover:text-orange-500'}>Process</NavLink>
             </li>
             <li>
-                <Link to='/contact' onClick={() => setshowmenu(false)} className='font-semibold text-zinc tracking-wider hover:text-orange-500'>Contact Us</Link>
+                <NavLink to='/contact' onClick={() => setshowmenu(false)} className={({isActive}) => isActive ? 'font-semibold text-orange-500 tracking-wider' : 'font-semibold text-zinc tracking-wider hover:text-orange-500'}>Contact Us</NavLink>
             </li>
 
             {/* Mobile Auth buttons */}
