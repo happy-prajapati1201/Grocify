@@ -20,6 +20,7 @@ import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import { AuthProvider } from "./context/AuthContext";
 import Checkout from "./components/Checkout/Checkout";
+import BillPage from "./components/BillPage/BillPage";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -58,6 +59,10 @@ const App = () => {
         {
           path: "/checkout",
           element: <Checkout />,
+        },
+        {
+          path: "/bill",
+          element: <BillPage />,
         },
         {
           path: "/product/:id",
