@@ -203,7 +203,7 @@ const Checkout = () => {
               )}
               <div className='flex justify-between py-2 text-lg border-t border-zinc-300 mt-2 pt-2'>
                 <span className='font-semibold'>Total</span>
-                <span className='font-bold text-orange-500'>Rs {orderTotal.toFixed(2)}</span>
+                <span className='font-bold text-black'>Rs {orderTotal.toFixed(2)}</span>
               </div>
             </div>
           </div>

@@ -94,7 +94,7 @@ const BillPage = () => {
                 )}
                 <div className='border-t border-zinc-300 pt-3 flex justify-between text-xl'>
                   <span className='font-semibold'>Total</span>
-                  <span className='font-bold text-green-600'>Rs {orderTotal.toFixed(2)}</span>
+                  <span className='font-bold text-black'>Rs {orderTotal.toFixed(2)}</span>
                 </div>
               </div>
             </div>

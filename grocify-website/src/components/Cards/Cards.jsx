@@ -4,17 +4,17 @@ import Button from '../Button/Button'
 import { LikesContext } from '../../context/LikesContext'
 import { CartContext } from '../../context/CartContext'
 
-const Cards = ({image, name, price, id, category}) => {
+const Cards = ({image, name, price, id, category, quantity}) => {
   const { toggleLike, isLiked } = useContext(LikesContext);
   const liked = isLiked(id);
   const { addToCart } = useContext(CartContext);
 
   const handleLike = () => {
-    toggleLike({ id, name, price, image, category });
+    toggleLike({ id, name, price, image, category, quantity });
   };
 
   const handleAddToCart = () => {
-    addToCart({ id, name, price, image, category }, 1);
+    addToCart({ id, name, price, image, category, quantity }, 1);
   }
 
   return (
@@ -36,13 +36,15 @@ const Cards = ({image, name, price, id, category}) => {
 
         {/* card image */}
         <div className='w-full h-60'> 
-            <img src={image}  className ='w-Full h-full object-contain mx-auto' />
+            <img src={image}  alt={name} className ='w-Full h-full object-contain mx-auto' />
         </div>
 
         {/* Card content */}
         <div className='text-center'>
-            <h3 className='text-2xl font-semibold'>{name}</h3>
-            <p className='text-2xl font-bold mt-4 mb-3'>Rs {price.toFixed(2)}</p>
+            <h3 className='text-xl font-semibold mt-4'>{name}</h3>
+            <p className='text-xl font-bold mt-2 mb-3 text-black'>
+              Rs {price} <span className="text-sm text-zinc-500 font-normal">/ {quantity}</span>
+            </p>
             <Button content="Buy Now" onClick={handleAddToCart}/>
         </div>
 

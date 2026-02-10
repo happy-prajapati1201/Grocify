@@ -4,6 +4,7 @@ import Heading from '../Heading/Heading';
 import { FaHeart, FaTrash } from 'react-icons/fa';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+import ProductList from '../ProductList/ProductList';
 
 const Favorites = () => {
   const { likedItems, toggleLike } = useContext(LikesContext);
@@ -32,7 +33,10 @@ const Favorites = () => {
           <div>
             <p className='text-lg text-zinc-600 mb-10'>You have {likedItems.length} favorite item(s)</p>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9'>
-              {likedItems.map((product) => (
+              {likedItems.map((product) => {
+                const productDetails = ProductList.find(item => item.id === product.id) || {};
+                const quantity = product.quantity || productDetails.quantity;
+                return (
                 <div key={product.id} className='bg-zinc-100 p-5 rounded-xl'>
                   {/* card icons */}
                   <div className='flex justify-between'>
@@ -58,12 +62,12 @@ const Favorites = () => {
                   {/* Card content */}
                   <div className='text-center'>
                     <h3 className='text-2xl font-semibold'>{product.name}</h3>
-                    <p className='text-sm text-zinc-600 mt-1'>{product.category}</p>
+                    <p className='text-sm text-zinc-600 mt-1'>{product.category} {quantity && `- ${quantity}`}</p>
                     <p className='text-2xl font-bold mt-4 mb-3'>Rs {product.price.toFixed(2)}</p>
                     <Button content='Shop Now' />
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           </div>
         )}

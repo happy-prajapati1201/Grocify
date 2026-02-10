@@ -57,7 +57,9 @@ const ProductDetail = () => {
             <p className='text-lg text-zinc-600 mb-6'>{product.category}</p>
             
             <div className='mb-8'>
-              <p className='text-5xl font-bold text-orange-500'>Rs {product.price.toFixed(2)}</p>
+              <p className='text-5xl font-bold text-black'>
+                Rs {product.price.toFixed(2)} <span className="text-3xl text-zinc-500 font-normal">/ {product.quantity}</span>
+              </p>
             </div>
 
             {/* Description */}
