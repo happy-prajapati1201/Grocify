@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
 
 const Buy = () => {
-  const { items, increment, decrement, removeFromCart, clearCart, totalItems, totalPrice, isDiscountEligible, discountAmount, finalPrice } = useContext(CartContext);
+  const { items, increment, decrement, removeFromCart, clearCart, uniqueCount, totalItems, totalPrice, isDiscountEligible, discountAmount, finalPrice } = useContext(CartContext);
 
   return (
     <section className='min-h-screen'>
@@ -32,7 +32,10 @@ const Buy = () => {
                     <div className='flex-1 w-full text-center sm:text-left'>
                       <h3 className='text-xl font-semibold'>{p.name}</h3>
                       <p className='text-sm text-zinc-500'>{p.category} {quantity && `- ${quantity}`}</p>
-                      <p className='text-lg font-bold mt-2'>Rs {(p.price * p.qty).toFixed(2)}</p>
+                      <div className='mt-2'>
+                        <p className='text-sm text-zinc-500'>Price: Rs {p.price.toFixed(2)}</p>
+                        <p className='text-lg font-bold'>Total: Rs {(p.price * p.qty).toFixed(2)}</p>
+                      </div>
                     </div>
                     <div className='flex items-center gap-3 mt-3 sm:mt-0 justify-center sm:justify-start'>
                       <button onClick={() => decrement(p.id)} className='w-9 h-9 rounded-lg bg-white text-zinc-700 flex items-center justify-center shadow-sm'><FaMinus /></button>
@@ -46,11 +49,11 @@ const Buy = () => {
                 );
               })}
             </div>
-            <div className='bg-zinc-100 rounded-xl p-4 sm:p-6 h-fit'>
+            <div className='bg-zinc-100 rounded-xl p-4 sm:p-6 h-fit sticky top-28'>
               <h4 className='text-xl font-semibold mb-4'>Order Summary</h4>
               <div className='flex justify-between py-2'>
-                <span className='text-zinc-600'>Items</span>
-                <span className='font-semibold'>{totalItems}</span>
+                <span className='text-zinc-600'>Products</span>
+                <span className='font-semibold'>{uniqueCount}</span>
               </div>
               <div className='flex justify-between py-2'>
                 <span className='text-zinc-600'>Subtotal</span>
